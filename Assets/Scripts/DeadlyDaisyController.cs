@@ -6,10 +6,22 @@ public class DeadlyDaisyController : MonoBehaviour
 {
     public float speed;
     public float range;
+    public float life = 1;
+    public GameObject dying;
     private float initial_pos;
     private GameObject player;
     private int direction = -1;
     private SpriteRenderer sprite;
+
+    void TakeDamage(){
+        life--;
+    }
+
+    void Die(){
+        Instantiate(dying, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +31,11 @@ public class DeadlyDaisyController : MonoBehaviour
     
     void FixedUpdate()
     {
+        if(life <= 0)
+        {
+            Die();
+        }
+
         if(transform.position.x >= initial_pos + range || transform.position.x <= initial_pos - range)
         {
             direction *= -1;
@@ -32,5 +49,10 @@ public class DeadlyDaisyController : MonoBehaviour
             transform.position -= transform.right * speed * Time.deltaTime;
             sprite.flipX = false;
         }
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.CompareTag("Bullet"))
+            TakeDamage();
     }
 }

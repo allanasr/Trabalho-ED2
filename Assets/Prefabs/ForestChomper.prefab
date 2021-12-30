@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 7947088050428269892}
   - component: {fileID: 7947088050428269891}
   - component: {fileID: -482838062871220370}
-  m_Layer: 0
+  - component: {fileID: 3089741710937083209}
+  m_Layer: 3
   m_Name: ForestChomper
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,9 +71,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingLayerID: 76060343
+  m_SortingLayer: 1
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: be24e61484d4d4c43aca8c40b037ccae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -117,3 +118,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   gravity: 0.22
+--- !u!70 &3089741710937083209
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7947088050428269890}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.000000065369484, y: 0.54835904}
+  m_Size: {x: 2.6500003, y: 1.5532933}
+  m_Direction: 1

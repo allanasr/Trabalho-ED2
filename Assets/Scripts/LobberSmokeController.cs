@@ -5,7 +5,7 @@ using UnityEngine;
 public class LobberSmokeController : MonoBehaviour
 {   
     IEnumerator DestroyAfterDelay(){
-        yield return new WaitForSeconds(0.82f);
+        yield return new WaitForSeconds(0.8f);
         Destroy(gameObject);
     }
 

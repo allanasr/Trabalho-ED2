@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 7752701880272267894}
   - component: {fileID: 7752701880272267895}
   - component: {fileID: -4739144076324689952}
-  m_Layer: 0
+  - component: {fileID: 673356490225926529}
+  m_Layer: 3
   m_Name: Forest Lobber
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 76060343
+  m_SortingLayer: 4
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 351059551f401a94d8db21ed9ff11c0e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -119,3 +120,31 @@ MonoBehaviour:
   shoot_cooldown: 5
   shoot_smoke: {fileID: 8838774366200114084, guid: cea9cd6e8332f124f85edf6b06e3310f, type: 3}
   seed: {fileID: 548245419768141874, guid: a0fd872923953e449a42f53f6af9fb0a, type: 3}
+  life: 5
+  dying: {fileID: 7396729879245272327, guid: ab88eacf05e7ff946934f914a54f7054, type: 3}
+--- !u!61 &673356490225926529
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7752701880272267896}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1.11}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1.37, y: 1.6}
+    newSize: {x: 1.37, y: 1.6}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.14, y: 2.22}
+  m_EdgeRadius: 0

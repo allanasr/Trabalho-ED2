@@ -17,6 +17,7 @@ public class AcornSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.position = new Vector3(Camera.main.transform.position.x + 15, transform.position.y, 0);
         if(Time.time - spawn_time >= spawn_cooldown){
             spawn_time = Time.time;
             Instantiate(acorn, transform.position + new Vector3(0, 0, 0), Quaternion.identity);
