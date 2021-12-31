@@ -50,9 +50,14 @@ public class DeadlyDaisyController : MonoBehaviour
             sprite.flipX = false;
         }
     }
+
     
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("Bullet"))
+        {
             TakeDamage();
+        }
+            direction *= -1; // todo: pq ao encostar em um objeto nao muda a direcao?
+        
     }
 }
