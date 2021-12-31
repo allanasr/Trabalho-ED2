@@ -5,11 +5,9 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] public float jumpImpulse = 500f;
     private Rigidbody2D rigidbody;
-    private bool jumping = false;
 
     [Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f;
     private bool facingRight = true;
-    private float horizontalMove = 0f;
     private Vector3 m_Velocity = Vector3.zero;
 
     const float k_GroundedRadius = .2f;
