@@ -71,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
         {
             GameObject.Find("Bravo").GetComponent<SpriteRenderer>().enabled = true;
             inputEnable = false;
+            SceneManager.LoadScene(3);
         }
 
         IEnumerator RestartLevel()

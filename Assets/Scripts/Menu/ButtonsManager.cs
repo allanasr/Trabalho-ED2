@@ -19,7 +19,7 @@ public class ButtonsManager : MonoBehaviour
         foreach (Transform t in GetComponentInChildren<Transform>())
         {
             buttonsList.Add(t.gameObject);
-            t.DOScale(1, animationDuration).SetEase(ease).SetDelay(1);
+            t.DOScale(1, animationDuration).SetEase(ease).SetDelay(0.5f);
         }
     }
 
