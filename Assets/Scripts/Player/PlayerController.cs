@@ -3,17 +3,16 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] public float jumpImpulse = 500f;
-    private Rigidbody2D rigidbody;
-
-    [Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f;
     private bool facingRight = true;
-    private Vector3 m_Velocity = Vector3.zero;
+    [SerializeField] public float jumpImpulse = 700f;
+    private bool grounded = false;
 
-    const float k_GroundedRadius = .2f;
-    [SerializeField] private LayerMask m_WhatIsGround;
-    private bool grounded;
-    [SerializeField] private Transform m_GroundCheck;
+    private Rigidbody2D rigidbody;
+    private Vector3 velocity = Vector3.zero;
+    [Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f;
+    private const float groundedRadius = .1f;
+    [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] private Transform groundCheck;
 
     [Header("Events")] [Space] public UnityEvent OnLandEvent;
 
@@ -30,7 +29,8 @@ public class PlayerController : MonoBehaviour
         bool wasGrounded = grounded;
         grounded = false;
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
+        // verifica colisao
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, whatIsGround);
         for (int i = 0; i < colliders.Length; i++)
         {
             if (colliders[i].gameObject != gameObject)
@@ -45,7 +45,8 @@ public class PlayerController : MonoBehaviour
     public void Move(float move, bool jump)
     {
         Vector3 targetVelocity = new Vector2(move * 10f, rigidbody.velocity.y);
-        rigidbody.velocity = Vector3.SmoothDamp(rigidbody.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
+        rigidbody.velocity = Vector3.SmoothDamp(rigidbody.velocity, targetVelocity, ref velocity, movementSmoothing);
+        
         if (jump && grounded)
         {
             rigidbody.AddForce(new Vector2(0f, jumpImpulse));

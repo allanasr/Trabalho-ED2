@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     public GameObject dyingEffect;
-
     public PlayerController controller;
     public Animator animator;
 
@@ -25,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("running", true);
         }
-
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
@@ -38,10 +36,9 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("jumping", false);
     }
 
-
     void FixedUpdate()
     {
-        if (inputEnable)
+        if (inputEnable) // apenas desativado em caso de morte
         {
             controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
             jump = false;
