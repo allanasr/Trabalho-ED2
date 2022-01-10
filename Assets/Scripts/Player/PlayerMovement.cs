@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("running", true);
         }
+
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
@@ -45,6 +46,27 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void Die()
+    {
+        inputEnable = false;
+        Instantiate(dyingEffect, transform.position + transform.up * 0.7f, Quaternion.identity);
+        gameObject.transform.localScale = new Vector3(0, 0, 0);
+        StartCoroutine(RestartLevel());
+    }
+    
+    void End()
+    {
+        GameObject.Find("Bravo").GetComponent<SpriteRenderer>().enabled = true;
+        inputEnable = false;
+        SceneManager.LoadScene(3);
+    }
+
+    IEnumerator RestartLevel()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("Level 1");
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
@@ -54,27 +76,6 @@ public class PlayerMovement : MonoBehaviour
         else if (other.gameObject.CompareTag("Goal"))
         {
             End();
-        }
-
-        void Die()
-        {
-            inputEnable = false;
-            Instantiate(dyingEffect, transform.position + transform.up * 0.7f, Quaternion.identity);
-            gameObject.transform.localScale = new Vector3(0, 0, 0);
-            StartCoroutine(RestartLevel());
-        }
-
-        void End()
-        {
-            GameObject.Find("Bravo").GetComponent<SpriteRenderer>().enabled = true;
-            inputEnable = false;
-            SceneManager.LoadScene(3);
-        }
-
-        IEnumerator RestartLevel()
-        {
-            yield return new WaitForSeconds(1f);
-            SceneManager.LoadScene("Level 1");
         }
     }
 }
